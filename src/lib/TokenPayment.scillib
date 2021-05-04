@@ -1,0 +1,22 @@
+type Error =
+| AdminValidationFailed
+| StagingAdminNotExist
+| StagingAdminValidationFailed
+
+let make_error =
+fun (result: Error) =>
+let result_code =
+match result with
+| AdminValidationFailed => Int32 -1
+| StagingAdminNotExist => Int32 -2
+| StagingAdminValidationFailed => Int32 -3
+end
+in
+{ _exception: "Error"; code: result_code }
+
+let one_msg =
+fun (m : Message) =>
+let e = Nil {Message} in
+Cons {Message} m e
+
+let addfunds_tag = "AddFunds"
