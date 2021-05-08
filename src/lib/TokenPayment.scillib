@@ -16,4 +16,9 @@ in
 
 let transfer_tag = "Transfer"
 
+let one_msg =
+fun (m : Message) =>
+let e = Nil {Message} in
+Cons {Message} m e
+
 let zero = Uint128 0

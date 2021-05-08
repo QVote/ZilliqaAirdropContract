@@ -6,7 +6,8 @@ library TokenPayment
     Error,
     make_error,
     zero,
-    transfer_tag
+    transfer_tag,
+    one_msg
 } from "./lib/TokenPayment.scillib"
 
 let create_transfer_messages: ByStr20 -> List ByStr20 -> List Uint128 -> List Message = 
@@ -79,9 +80,14 @@ transition ClaimAdmin()
         ThrowError e
     end
 end
-(* get back remaining tokens *)
+(* get back remaining zrc2 tokens *)
 transition DrainContractBalance(amt: Uint128)
-    IsAdmin _sender
+    IsAdmin _sender;
+    msg = {_tag: transfer_tag; _recipient: current_impl; _amount: zero; to: _sender; amount: amt};
+    msgs = one_msg msg;
+    send msgs;
+    e = { _eventname: "DrainContractBalance"; to: _sender; amount: amt};
+    event e
 end
 (* send payments to zrc2 compatible *)
 transition Pay(addresses: List ByStr20, amts: List Uint128)
