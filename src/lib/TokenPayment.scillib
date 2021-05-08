@@ -18,6 +18,8 @@ in
 
 let transfer_tag = "Transfer"
 
+let addfunds_tag = "AddFunds"
+
 let one_msg =
 fun (m : Message) =>
 let e = Nil {Message} in
