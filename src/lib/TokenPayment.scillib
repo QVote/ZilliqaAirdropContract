@@ -19,4 +19,4 @@ fun (m : Message) =>
 let e = Nil {Message} in
 Cons {Message} m e
 
-let addfunds_tag = "AddFunds"
+let zero = Uint128 0
