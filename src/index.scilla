@@ -5,11 +5,9 @@ library TokenPayment
 @import {
     Error,
     make_error,
-    one_msg,
-    zero
+    zero,
+    transfer_tag
 } from "./lib/TokenPayment.scillib"
-
-let transfer_tag = "Transfer"
 
 let create_transfer_messages: ByStr20 -> List ByStr20 -> List Uint128 -> List Message = 
     fun(current_impl: ByStr20) =>

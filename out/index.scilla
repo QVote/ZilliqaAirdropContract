@@ -18,13 +18,7 @@ end
 in
 { _exception: "Error"; code: result_code }
 
-let one_msg =
-fun (m : Message) =>
-let e = Nil {Message} in
-Cons {Message} m e
-
 let zero = Uint128 0
-
 let transfer_tag = "Transfer"
 
 let create_transfer_messages: ByStr20 -> List ByStr20 -> List Uint128 -> List Message = 

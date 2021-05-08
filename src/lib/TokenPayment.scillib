@@ -14,9 +14,6 @@ end
 in
 { _exception: "Error"; code: result_code }
 
-let one_msg =
-fun (m : Message) =>
-let e = Nil {Message} in
-Cons {Message} m e
+let transfer_tag = "Transfer"
 
 let zero = Uint128 0
